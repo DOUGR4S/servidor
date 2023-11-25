@@ -18,7 +18,7 @@ app.get("/", (req, res)=>{
 app.post("/", (req, res)=>{
     const {nome, email, telefone, checkin, checkout} = req.body;
     insertReserva(nome, email, telefone, checkin, checkout);
-    res.sendFile('public/index.html', { root: __dirname});
+    res.send("Olá);
 });
 
 //TIJb9gBpzYZ0RZ2q (senha MongoDB)
