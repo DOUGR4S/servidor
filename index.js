@@ -16,8 +16,8 @@ app.get("/", (req, res)=>{
 });
 
 app.post("/", (req, res)=>{
-    const {nome, email, telefone, checkin, checkout} = req.body;
-    insertReserva(nome, email, telefone, checkin, checkout);
+    const {nome, email, telefone, checkin, checkout, valorTotal} = req.body;
+    insertReserva(nome, email, telefone, checkin, checkout, valorTotal);
     res.send("Olá");
 });
 
@@ -26,13 +26,14 @@ app.post("/", (req, res)=>{
 
 mongoose.connect("mongodb+srv://dadsddodo68:TIJb9gBpzYZ0RZ2q@cluster0.yed66as.mongodb.net/?retryWrites=true&w=majority");
 
-function insertReserva (nome, email, telefone, checkin, checkout) {
+function insertReserva (nome, email, telefone, checkin, checkout, valorTotal) {
     const estadia = new Reserva({
         nome: nome,
         email: email, 
         telefone: telefone,
         checkin: checkin,
         checkout: checkout,
+        valorTotal: valorTotal,
     });
     estadia.save();
 }
