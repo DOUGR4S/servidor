@@ -33,7 +33,7 @@ function insertReserva (nome, email, telefone, checkin, checkout, valorTotal) {
         telefone: telefone,
         checkin: checkin,
         checkout: checkout,
-        valorTotal: valorTotal,
+        valorTotal: valorTotal.replace("R$ ", ""),
     });
     estadia.save();
 }
