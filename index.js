@@ -12,13 +12,15 @@ app.listen(8000, ()=>{
 });
 
 app.get("/", (req, res)=>{
-    res.sendFile('public/index.html', { root: __dirname});
+    res.setHeader("location", "http://projeto-hotel-nine.vercel.app"
+    );
+    res.end();
 });
 
 app.post("/", (req, res)=>{
     const {nome, email, telefone, checkin, checkout, valorTotal} = req.body;
     insertReserva(nome, email, telefone, checkin, checkout, valorTotal);
-    res.send("Olá");
+    res.redirect("http://127.0.0.1:5501/reservaConcluida.html");
 });
 
 //TIJb9gBpzYZ0RZ2q (senha MongoDB)
