@@ -6,6 +6,7 @@ const reservaSchema = new mongoose.Schema({
     email: String,
     checkin: String,
     checkout: String,
+    valorTotal: String,
 });
 
 const Reserva = mongoose.model("Reserva", reservaSchema);
