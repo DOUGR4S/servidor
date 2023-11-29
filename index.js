@@ -16,8 +16,8 @@ app.get("/", (req, res)=>{
 });
 
 app.post("/", (req, res)=>{
-    const {nome, email, telefone, checkin, checkout, valorTotal} = req.body;
-    insertReserva(nome, email, telefone, checkin, checkout, valorTotal);
+    const {nome, email, telefone, checkin, checkout, valorTotal, quartoReservado} = req.body;
+    insertReserva(nome, email, telefone, checkin, checkout, valorTotal, quartoReservado);
     res.sendFile('public/reservaConcluida.html', { root: __dirname});
 });
 
@@ -26,7 +26,7 @@ app.post("/", (req, res)=>{
 
 mongoose.connect("mongodb+srv://dadsddodo68:TIJb9gBpzYZ0RZ2q@cluster0.yed66as.mongodb.net/?retryWrites=true&w=majority");
 
-function insertReserva (nome, email, telefone, checkin, checkout, valorTotal) {
+function insertReserva (nome, email, telefone, checkin, checkout, valorTotal, quartoReservado) {
     const estadia = new Reserva({
         nome: nome,
         email: email, 
@@ -34,6 +34,7 @@ function insertReserva (nome, email, telefone, checkin, checkout, valorTotal) {
         checkin: checkin,
         checkout: checkout,
         valorTotal: valorTotal.replace("R$ ", ""),
+        quartoReservado: quartoReservado,
     });
     estadia.save();
 }
